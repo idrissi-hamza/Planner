@@ -7,7 +7,7 @@ import { calendarActions } from "../store/calendar";
 function Header() {
   const monthIndex = useSelector((state) => state.calendar.monthIndex);
   const dispatch = useDispatch();
-  const curMonthHandler = () => dispatch(calendarActions.curMonth());
+  const curMonthHandler = () => dispatch(calendarActions.today());
   const nextMonthHandler = () => dispatch(calendarActions.nextMonth());
   const prevMonthHandler = () => dispatch(calendarActions.prevMonth());
   return (

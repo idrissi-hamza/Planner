@@ -8,24 +8,23 @@ import { calendarActions } from "../store/calendar";
 function Navbar() {
   const dispatch = useDispatch();
   const monthIndex = useSelector((state) => state.calendar.monthIndex);
-  const init = useSelector((state) => state.calendar.init);
+  const change = useSelector((state) => state.calendar.change);
 
   const [monthIndexSmCal, setMonthIndexSmCal] = useState(monthIndex);
-  const month = getMonth(monthIndexSmCal, 42);
   useEffect(() => {
     setMonthIndexSmCal(monthIndex);
-  }, [monthIndex, init]);
+  }, [change]);
 
   const prevMonthHandler = () => {
-    dispatch(calendarActions.changeMonth());
-
     setMonthIndexSmCal((prev) => prev - 1);
   };
-  const nextMonthHandler = () => {
-    dispatch(calendarActions.changeMonth());
 
+  const nextMonthHandler = () => {
     setMonthIndexSmCal((prev) => prev + 1);
   };
+
+  const month = getMonth(monthIndexSmCal, 42);
+
   return (
     <div className="border-r-4 text-slate-900 w-64 px-4 ">
       <div className="flex justify-around text-gray-500 ">
