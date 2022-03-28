@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-export const getMonth = (month,numberOfDays) => {
+export const getMonth = (month, numberOfDays) => {
   const year = dayjs().year();
   const firstDayOfTheMonth = dayjs(new Date(year, month, 1)).day();
   let currentMonthCount = 0 - firstDayOfTheMonth;
@@ -11,3 +11,13 @@ export const getMonth = (month,numberOfDays) => {
 
   return daysArray;
 };
+
+export const weekday = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
