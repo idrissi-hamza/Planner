@@ -12,8 +12,8 @@ function App() {
     <div className="h-screen flex flex-col">
       <Header />
       <main className="flex flex-1   ">
-        <Navbar />
-        <Month month={getMonth(monthIndex)} />
+        <Navbar month={getMonth(monthIndex, 42)} />
+        <Month month={getMonth(monthIndex, 35)} />
       </main>
     </div>
   );

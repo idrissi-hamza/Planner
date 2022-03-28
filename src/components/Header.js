@@ -24,19 +24,21 @@ function Header() {
         Today
       </button>
       <button
-        className="material-icons-outlined text-gray-200  "
+        className="material-icons-outlined text-gray-200 mr-2 "
         onClick={prevMonthHandler}
       >
         chevron_left
       </button>
-      <p></p>
+
       <button
-        className="material-icons-outlined text-gray-200 "
+        className="material-icons-outlined text-gray-200 mr-3 "
         onClick={nextMonthHandler}
       >
         chevron_right
       </button>
-      <p>{dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}</p>
+      <p className="text-slate-300 font-bold ">
+        {dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}
+      </p>
     </header>
   );
 }

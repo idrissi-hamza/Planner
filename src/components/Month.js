@@ -5,7 +5,7 @@ import Day from "./Day";
 function Month({ month }) {
   return (
     <div className="grid grid-cols-7  m-3 border-t border-r flex-1 ">
-      {month.flat().map((day, i) => (
+      {month.map((day, i) => (
         <Day key={i} day={day} idx={i} />
       ))}
     </div>
