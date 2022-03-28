@@ -7,12 +7,11 @@ import { useSelector } from "react-redux";
 
 function App() {
   const monthIndex = useSelector((state) => state.calendar.monthIndex);
-  console.log(monthIndex);
   return (
     <div className="h-screen flex flex-col">
       <Header />
       <main className="flex flex-1   ">
-        <Navbar month={getMonth(monthIndex, 42)} />
+        <Navbar />
         <Month month={getMonth(monthIndex, 35)} />
       </main>
     </div>

@@ -6,10 +6,7 @@ function SmallCalendar({ month }) {
     <div className="text-sm font-medium text-slate-700 grid grid-cols-7  gap-1  ">
       {month.map((day, i) =>
         i < 7 ? (
-          <p
-            className="font-bold text-slate-500    w-5 text-center "
-            key={i}
-          >
+          <p className="font-bold text-slate-500    w-5 text-center " key={i}>
             {day.format("dd").slice(0, 1)}
           </p>
         ) : (

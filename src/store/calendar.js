@@ -1,12 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import dayjs from "dayjs";
 
-const initialState = { monthIndex: dayjs().month() };
+const initialState = { monthIndex: dayjs().month(), init: false };
 
 export const calendarSlice = createSlice({
   name: "name",
   initialState,
   reducers: {
+    changeMonth: (state) => {
+      state.init = false;
+    },
     nextMonth: (state) => {
       state.monthIndex++;
     },
@@ -14,7 +17,8 @@ export const calendarSlice = createSlice({
       state.monthIndex--;
     },
     curMonth(state) {
-      state.monthIndex = dayjs().month();
+      state.monthIndex = initialState.monthIndex;
+      state.init = true;
     },
   },
 });
