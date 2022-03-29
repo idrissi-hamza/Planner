@@ -16,7 +16,7 @@ function SmallCalendar({ month }) {
             ${
               day.format("DD/MM/YYYY") === dayjs().format("DD/MM/YYYY")
                 ? "bg-blue-500    text-blue-100 rounded-full hover:rounded-none "
-                : "  hover:bg-blue-200  "
+                : "  hover:bg-blue-200 transition ease-out duration-400  "
             }`}
           key={i}
         >

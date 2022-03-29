@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="h-screen  flex flex-col">
       <Header />
-      <main className="flex flex-1 ">
+      <main className="flex  ">
         <Navbar />
         <Month />
       </main>

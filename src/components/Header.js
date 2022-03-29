@@ -10,11 +10,18 @@ function Header() {
   const curMonthHandler = () => dispatch(calendarActions.today());
   const nextMonthHandler = () => dispatch(calendarActions.nextMonth());
   const prevMonthHandler = () => dispatch(calendarActions.prevMonth());
+  const showNav = () => dispatch(calendarActions.toggleNav());
+
   return (
     <header className=" bg-slate-500 flex  items-center ">
-      <span className="material-icons-round text-gray-200 text-4xl ml-3">
-        menu
-      </span>
+      <div className="hover:bg-slate-400 text-gray-300 hover:text-gray-600 ml-3 w-11 h-11 flex justify-center items-center rounded-full transition ease-in-out duration-300">
+        <button
+          onClick={showNav}
+          className="material-icons-round   text-4xl   "
+        >
+          menu
+        </button>
+      </div>
 
       <h1 className="text-lg font-black  text-slate-300 m-3 px-4">Planner</h1>
       <button
