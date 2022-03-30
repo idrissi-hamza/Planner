@@ -11,8 +11,15 @@ function Month() {
   const month = getMonth(monthIndex, 35);
 
   return (
-    <div
-      
+    <motion.div
+      initial={{ opacity: 0, x: "10vw" }}
+      animate={{
+        opacity: 1,
+        x: 0,
+        transition: {
+          duration: 0.4,
+                  },
+      }}
       className="flex flex-col h-screen  w-full"
     >
       <div className="flex h-12 ">
@@ -30,15 +37,8 @@ function Month() {
           <Day key={i} day={day} idx={i} />
         ))}
       </div>
-    </div>
-    
+    </motion.div>
   );
 }
 
 export default Month;
-
-// animate={{
-//   scale: sideBar || modal ? 0.8 : 1,
-//   opacity: sideBar || modal ? 0.5 : 1
-// }}
-// transition={{ type: "spring", bounce: 0, duration: 0.4 }}

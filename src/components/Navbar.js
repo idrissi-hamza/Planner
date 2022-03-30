@@ -28,47 +28,51 @@ function Navbar() {
   return (
     <AnimatePresence>
       {navBar && (
-      <motion.aside
-      animate={{
-        width: navBar ? "290px" : "0px",
+        <motion.aside
+          initial={{ opacity: 0, width: "290px", x: "-10vw" }}
+          animate={{
+            opacity: 1,
+            x: 0,
+            transition: {
+              duration: 0.5,
+              // type: "spring",
+              // damping: 8,
+              // mass: 0.4,
+            },
+          }}
+          exit={{
+            opacity: 0,
+          }}
+          className="border-r  h-screen  px-4 bg-gray-100   "
+        >
+          <div className=" mt-4 text-gray-500 flex  ">
+            <div>
+              <button
+                className="material-icons-outlined  mr-2 "
+                onClick={prevMonthHandler}
+              >
+                arrow_downward
+              </button>
 
-        transition: {
-          duration: 0.5,
-          type: "spring",
-          damping: 10,
-        },
-      }}
-        className="border-r  h-screen  px-4 bg-gray-100   "
-      >
-        <div className=" mt-4 text-gray-500 flex  ">
-          <div>
-            <button
-              className="material-icons-outlined  mr-2 "
-              onClick={prevMonthHandler}
-            >
-              arrow_downward
-            </button>
-
-            <button
-              className="material-icons-outlined  mr-3 "
-              onClick={nextMonthHandler}
-            >
-              arrow_upward
-            </button>
+              <button
+                className="material-icons-outlined  mr-3 "
+                onClick={nextMonthHandler}
+              >
+                arrow_upward
+              </button>
+            </div>
+            <span>
+              {" "}
+              {dayjs(new Date(dayjs().year(), monthIndexSmCal)).format(
+                "MMMM YYYY"
+              )}
+            </span>
           </div>
-          <span>
-            {" "}
-            {dayjs(new Date(dayjs().year(), monthIndexSmCal)).format(
-              "MMMM YYYY"
-            )}
-          </span>
-        </div>
 
-        <SmallCalendar month={month} />
-      </motion.aside>
+          <SmallCalendar month={month} />
+        </motion.aside>
       )}
     </AnimatePresence>
-    
   );
 }
 
