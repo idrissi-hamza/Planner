@@ -51,14 +51,15 @@ function Navbar() {
                 className="material-icons-outlined  mr-2 "
                 onClick={prevMonthHandler}
               >
-                arrow_downward
+                arrow_upward
               </button>
 
               <button
                 className="material-icons-outlined  mr-3 "
                 onClick={nextMonthHandler}
               >
-                arrow_upward
+                arrow_downward
+                
               </button>
             </div>
             <span>

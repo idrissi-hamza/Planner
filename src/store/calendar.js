@@ -6,6 +6,7 @@ const initialState = {
   change: false,
   navBar: true,
   pickDay: null,
+  // pickMonth:dayjs().month() //if a day from another month is clicked the big calendar should  show the choosen  month
 };
 
 export const calendarSlice = createSlice({
@@ -29,6 +30,7 @@ export const calendarSlice = createSlice({
     },
     pickDay(state, action) {
       state.pickDay = +action.payload;
+      state.monthIndex = dayjs(+action.payload).month();
     },
   },
 });
