@@ -33,6 +33,10 @@ export const calendarSlice = createSlice({
       state.pickDay = +action.payload;
       state.monthIndex = dayjs(+action.payload).month();
     },
+    selectDay(state, action) {
+      state.pickDay = +action.payload;
+      // state.monthIndex = dayjs(+action.payload).month();
+    },
   },
 });
 

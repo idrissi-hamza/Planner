@@ -5,6 +5,7 @@ import { calendarActions } from "../store/calendar";
 import { useDispatch } from "react-redux";
 function SmallCalendar({ month }) {
   const dispatch = useDispatch();
+  
   return (
     <div className="text-sm font-medium text-slate-700 grid grid-cols-7    ">
       {weekday.map((day, i) => (
