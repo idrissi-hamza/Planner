@@ -24,6 +24,7 @@ export const calendarSlice = createSlice({
     today(state) {
       state.monthIndex = dayjs().month();
       state.change = !state.change;
+      state.pickDay = dayjs();
     },
     toggleNav(state) {
       state.navBar = !state.navBar;

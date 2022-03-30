@@ -12,9 +12,7 @@ function Day({ day }) {
     : "";
   let pickCss;
   if (pickDay) {
-    // console.log(dayjs(pickDay).format("DD/MM/YYYY"),day.format("DD/MM/YYYY"));
-
-    if (day.format("DD/MM/YYYY") ===dayjs( pickDay).format("DD/MM/YYYY")) {
+        if (day.format("DD/MM/YYYY") ===dayjs( pickDay).format("DD/MM/YYYY")) {
       pickCss = "bg-blue-200  ";
     }
     
@@ -24,7 +22,7 @@ function Day({ day }) {
     <div
       id={day}
       onClick={(e) => dispatch(calendarActions.pickDay(e.target.id))}
-      className={` ${tdyCss} ${pickCss} focus:bg-blue-100  active:bg-blue-300 group  text-md text-slate-700 border-t border-r pl-2   transition ease-out duration-200 select-none cursor-pointer `}
+      className={` ${tdyCss} ${pickCss} focus:bg-blue-100   active:bg-blue-300 group  text-md text-slate-700 border-t border-r pl-2   transition ease-out duration-200 select-none cursor-pointer `}
     >
       {isToday ? day.format("MMM-DD") : day.format("DD")}
       
