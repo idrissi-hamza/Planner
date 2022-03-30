@@ -5,6 +5,7 @@ const initialState = {
   monthIndex: dayjs().month(),
   change: false,
   navBar: true,
+  pickDay: null,
 };
 
 export const calendarSlice = createSlice({
@@ -25,6 +26,9 @@ export const calendarSlice = createSlice({
     },
     toggleNav(state) {
       state.navBar = !state.navBar;
+    },
+    pickDay(state, action) {
+      state.pickDay = +action.payload;
     },
   },
 });

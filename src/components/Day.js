@@ -1,18 +1,33 @@
 import dayjs from "dayjs";
 import React from "react";
-function Day({ day, idx }) {
+import { useDispatch, useSelector } from "react-redux";
+import { calendarActions } from "../store/calendar";
+function Day({ day }) {
+  const dispatch = useDispatch();
+  const pickDay = useSelector((state) => state.calendar.pickDay);
+
   let isToday = day.format("DD/MM/YYYY") === dayjs().format("DD/MM/YYYY");
   const tdyCss = isToday
-    ? "  bg-blue-500 rounded-full  text-white group-hover:rounded-none "
+    ? " border-t-4 border-t-blue-400  text-blue-800  font-semibold "
     : "";
+  let pickCss;
+  if (pickDay) {
+    // console.log(dayjs(pickDay).format("DD/MM/YYYY"),day.format("DD/MM/YYYY"));
 
+    if (day.format("DD/MM/YYYY") ===dayjs( pickDay).format("DD/MM/YYYY")) {
+      pickCss = "bg-blue-200  ";
+    }
+    
+  }
+  
   return (
     <div
-      className={`group hover:bg-slate-100 text-md text-slate-700 border-t border-r  flex    flex-1 hover:bg-blue-200 transition ease-out duration-200 `}
+      id={day}
+      onClick={(e) => dispatch(calendarActions.pickDay(e.target.id))}
+      className={` ${tdyCss} ${pickCss} focus:bg-blue-100  active:bg-blue-300 group  text-md text-slate-700 border-t border-r pl-2   transition ease-out duration-200 select-none cursor-pointer `}
     >
-      <p className={`${tdyCss} flex items-center justify-center w-8 h-8 `}>
-        {day.format("DD")}
-      </p>
+      {isToday ? day.format("MMM-DD") : day.format("DD")}
+      
     </div>
   );
 }

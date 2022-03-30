@@ -5,9 +5,9 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="h-screen  flex flex-col">
+    <div className="  flex flex-col h-screen ">
       <Header />
-      <main className="flex  ">
+      <main className="flex  h-full">
         <Navbar />
         <Month />
       </main>

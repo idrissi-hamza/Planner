@@ -1,12 +1,10 @@
-import dayjs from "dayjs";
-import React, { useState } from "react";
+import React from "react";
 import Day from "./Day";
 import { useSelector } from "react-redux";
 import { getMonth, weekday } from "../util";
 import { motion } from "framer-motion";
 
 function Month() {
-  const navBar = useSelector((state) => state.calendar.navBar);
   const monthIndex = useSelector((state) => state.calendar.monthIndex);
   const month = getMonth(monthIndex, 35);
 
@@ -20,7 +18,7 @@ function Month() {
           duration: 0.4,
                   },
       }}
-      className="flex flex-col h-screen  w-full"
+      className="flex flex-col   w-full"
     >
       <div className="flex h-12 ">
         {weekday.map((day, i) => (

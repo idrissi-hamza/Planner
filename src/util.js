@@ -8,7 +8,7 @@ export const getMonth = (month, numberOfDays) => {
     currentMonthCount++;
     return dayjs(new Date(year, month, currentMonthCount));
   });
-
+  
   return daysArray;
 };
 
