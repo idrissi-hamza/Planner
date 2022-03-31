@@ -2,7 +2,7 @@ import "./App.css";
 import Month from "./components/Month";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
-import TasksBar from "./components/TasksBar";
+import TasksBar from "./components/TasksBar/TasksBar";
 
 function App() {
   return (
