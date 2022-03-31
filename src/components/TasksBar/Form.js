@@ -1,9 +1,13 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 function Form() {
   const inputRef = useRef(null);
+  const [showInput, setShowInput] = useState(false);
   const clickHandler = () => {
-    inputRef.current.focus();
+    setShowInput(true);
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 100);
   };
   return (
     <div className=" p-4 pl-6 flex-1">
@@ -17,14 +21,20 @@ function Form() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          setShowInput(false)
         }}
       >
-        <input
-          className="outline-none "
-          type="text"
-          placeholder="Add a task"
-          ref={inputRef}
-        ></input>
+        {showInput && (
+          <div className="flex items-center justify-start mt-2 text-slate-400 ">
+            <span className="material-icons-outlined">add</span>
+            <input
+              className="outline-none pl-3"
+              type="text"
+              placeholder="Add a task"
+              ref={inputRef}
+            ></input>
+          </div>
+        )}
       </form>
     </div>
   );
