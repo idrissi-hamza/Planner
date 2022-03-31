@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { tasksActions } from "../../store/tasks";
 
 function Form() {
-  const tasks = useSelector((state) => state.tasks.tasks);
+  // const tasks = useSelector((state) => state.tasks.tasks);
   const dispatch = useDispatch();
   const inputRef = useRef(null);
   const [showInput, setShowInput] = useState(false);
