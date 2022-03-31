@@ -8,7 +8,7 @@ function Day({ day }) {
 
   let isToday = day.format("DD/MM/YYYY") === dayjs().format("DD/MM/YYYY");
   const tdyCss = isToday
-    ? " border-t-4 border-t-blue-400  text-blue-800  font-semibold "
+    ? " border-t-[5px] border-t-blue-400  text-blue-800  font-semibold "
     : "";
   let pickCss;
   if (pickDay) {

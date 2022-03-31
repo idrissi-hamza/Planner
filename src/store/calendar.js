@@ -5,7 +5,7 @@ const initialState = {
   monthIndex: dayjs().month(),
   change: false,
   navBar: true,
-  pickDay: null,
+  pickDay: dayjs(),
   // pickMonth:dayjs().month() //if a day from another month is clicked the big calendar should  show the choosen  month
 };
 

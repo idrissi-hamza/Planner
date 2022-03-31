@@ -29,7 +29,7 @@ function Navbar() {
     <AnimatePresence>
       {navBar && (
         <motion.aside
-          initial={{ opacity: 0, width: "300px", x: "-10vw" }}
+          initial={{ opacity: 0, width: "250px", x: "-10vw" }}
           animate={{
             opacity: 1,
             x: 0,
@@ -43,7 +43,7 @@ function Navbar() {
           exit={{
             opacity: 0,
           }}
-          className="border-r   px-4 bg-gray-100  "
+          className="border-r   px-4 bg-gray-100 shrink-0 "
         >
           <div className=" mt-4 text-gray-500 flex  ">
             <div>
@@ -59,7 +59,6 @@ function Navbar() {
                 onClick={nextMonthHandler}
               >
                 arrow_downward
-                
               </button>
             </div>
             <span>
