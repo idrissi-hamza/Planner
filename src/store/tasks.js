@@ -18,7 +18,9 @@ export const tasksSlice = createSlice({
         completed: false,
         important: false,
       });
+      
     },
+   
   },
 });
 
