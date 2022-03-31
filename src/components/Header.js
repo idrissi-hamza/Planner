@@ -17,7 +17,7 @@ function Header() {
       <div className="hover:bg-slate-400 text-gray-300 hover:text-gray-600 ml-3 w-11 h-11 flex justify-center items-center rounded-full transition ease-in-out duration-300">
         <button
           onClick={showNav}
-          className="material-icons-round   text-4xl   "
+          className="material-icons-round   text-4xl "
         >
           menu
         </button>
