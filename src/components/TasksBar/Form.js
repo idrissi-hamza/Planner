@@ -20,7 +20,7 @@ function Form() {
     setTask(e.target.value)
   }
   return (
-    <div className=" p-4 pl-6 flex-1">
+    <>
       <button
         onClick={clickHandler}
         className="flex items-center gap-4 text-blue-600  font-semibold hover:bg-slate-200 w-64 h-8 p-2 rounded-full "
@@ -31,7 +31,7 @@ function Form() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          setShowInput(false);
+          // setShowInput(false);
           dispatch(tasksActions.addTask(task))
           setTask('')
         }}
@@ -50,7 +50,8 @@ function Form() {
           </div>
         )}
       </form>
-    </div>
+     
+    </>
   );
 }
 

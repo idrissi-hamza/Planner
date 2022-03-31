@@ -12,7 +12,12 @@ export const tasksSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state, action) => {
-      state.tasksList.push({ id: Date.now(), title: action.payload });
+      state.tasksList.push({
+        id: Date.now(),
+        title: action.payload,
+        completed: false,
+        important: false,
+      });
     },
   },
 });
