@@ -1,4 +1,6 @@
 import React, { useRef, useState } from "react";
+import { useCallback } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tasksActions } from "../../store/tasks";
 
@@ -9,29 +11,28 @@ function Form() {
   const [showInput, setShowInput] = useState(false);
   const [task, setTask] = useState("");
 
-  const wait = (s) =>
-    setTimeout(() => {
-      setShowInput(false);
-    }, s);
-
   const clickHandler = () => {
     setShowInput(true);
     setTimeout(() => {
       inputRef.current.focus();
     }, 100);
-
-    
   };
 
   const changeHandler = (e) => {
     setTask(e.target.value);
-  
+    const wait = (s) =>
+      setTimeout(() => {
+        setShowInput(false);
+      }, s);
+    wait(10000);
+    return () => clearTimeout(wait);
   };
+
   return (
     <div className="ml-4">
       <button
         onClick={clickHandler}
-        className="flex items-center gap-4 text-blue-600  font-semibold hover:bg-slate-100 w-64 h-8 p-2 rounded-full "
+        className="flex items-center gap-4 text-blue-600  font-semibold hover:bg-slate-100 w-[300px] h-8 p-2 rounded-full "
       >
         <span className="material-icons-outlined">add_task</span>Add a Task
       </button>

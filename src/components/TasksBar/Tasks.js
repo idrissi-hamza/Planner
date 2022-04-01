@@ -47,7 +47,7 @@ function Tasks() {
               grade
               
             </span>
-            <div class="absolute bg-lime-200    h-8 px-1 z-10 w-36 hover-target text-lime-600 transition ease-in duration-500 delay-1000  flex -left-32  -top-6       ">
+            <div className="absolute bg-lime-200    h-8 px-1 z-10 w-36 hover-target text-lime-600 transition ease-in duration-500 delay-1000  flex -left-32  -top-6       ">
                {task.important? 'Delete Importance':'Mark as Important!'}
               </div>
           </div>
