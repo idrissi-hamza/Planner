@@ -1,11 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { tasksActions } from "../../store/tasks";
+
 
 function Tasks() {
+  const dispatch=useDispatch()
   const tasksList = useSelector((state) => state.tasks.tasksList);
   let starType = "-outlined";
-  const clickHandler = () => {
-    return (starType = "");
+  const clickHandler = (id) => {
+    dispatch(tasksActions.toggleImportance(id))
   };
   return (
     <div>
@@ -13,9 +16,9 @@ function Tasks() {
         <div key={task.id} className="flex justify-between ">
           <p>{task.title}</p>
           <span
-            onClick={clickHandler}
+            onClick={clickHandler.bind(null,task.id)}
             className={`text-xl cursor-pointer text-blue-500 ${
-              task.important ? "material-icons-outlined" : "material-icons"
+              !task.important ? "material-icons-outlined" : "material-icons"
             } `}
           >
             grade
