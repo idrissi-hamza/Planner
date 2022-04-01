@@ -10,7 +10,7 @@ function Tasks() {
   };
 
   return (
-    <div>
+    <div className=" overflow-y-auto h-64 scrollbar-thin ">
       {tasksList.map((task) => (
         <div key={task.id} className="flex justify-between ">
           <div className="flex items-center  space-x-3 cursor-pointer ">
