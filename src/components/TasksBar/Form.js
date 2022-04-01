@@ -28,10 +28,10 @@ function Form() {
   
   };
   return (
-    <>
+    <div className="ml-4">
       <button
         onClick={clickHandler}
-        className="flex items-center gap-4 text-blue-600  font-semibold hover:bg-slate-200 w-64 h-8 p-2 rounded-full "
+        className="flex items-center gap-4 text-blue-600  font-semibold hover:bg-slate-100 w-64 h-8 p-2 rounded-full "
       >
         <span className="material-icons-outlined">add_task</span>Add a Task
       </button>
@@ -45,7 +45,7 @@ function Form() {
         }}
       >
         {showInput && (
-          <div className="flex items-center justify-start mt-2 text-slate-400 pb-1 border-b ">
+          <div className="flex items-center justify-start m-2 text-slate-400 pb-1 border-b ">
             <span className="material-icons-outlined">add</span>
             <input
               className="outline-none pl-3"
@@ -58,7 +58,7 @@ function Form() {
           </div>
         )}
       </form>
-    </>
+    </div>
   );
 }
 

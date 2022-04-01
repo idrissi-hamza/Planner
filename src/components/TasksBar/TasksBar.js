@@ -12,7 +12,7 @@ const TasksBar = () => {
         <h1 className=" pl-4 pt-3 text-lg font-semibold text-slate-700  flex h-12 border">
           {dayjs(pickDay).format("dddd, MMMM D, YYYY")}{" "}
         </h1>
-        <div className=" p-4 pl-6 flex-1">
+        <div className=" pt-4  flex-1">
           <Form />
           <Tasks/>
         </div>

@@ -7,3 +7,13 @@
     @apply bg-slate-000;
   }
 } */
+
+.hover-trigger .hover-target {
+  opacity: 0; clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 86% 74%, 91% 100%, 71% 75%, 0% 75%);
+   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 86% 74%, 91% 100%, 71% 75%, 0% 75%);
+}
+
+.hover-trigger:hover .hover-target {
+  opacity:1 ; 
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 86% 74%, 91% 100%, 71% 75%, 0% 75%);
+}
