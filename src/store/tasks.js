@@ -19,20 +19,14 @@ export const tasksSlice = createSlice({
         important: false,
       });
     },
-    toggleImportance: (state, action) => {
-      let id = action.payload;
+    toggle: (state, action) => {
+      let id = action.payload.id;
       let ids = state.tasksList.map((task) => task.id);
       let idx = ids.findIndex((el) => el === id);
-      state.tasksList[idx].important = !state.tasksList[idx].important;
-      console.log(action.payload);
+      state.tasksList[idx][action.payload.type] = !state.tasksList[idx][action.payload.type];
+      console.log(action.payload.type);
     },
-    toggleCompleted: (state, action) => {
-      let id = action.payload;
-      let ids = state.tasksList.map((task) => task.id);
-      let idx = ids.findIndex((el) => el === id);
-      state.tasksList[idx].completed = !state.tasksList[idx].completed;
-     
-    },
+    
   },
 });
 
