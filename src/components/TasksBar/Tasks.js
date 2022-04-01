@@ -5,7 +5,6 @@ import { tasksActions } from "../../store/tasks";
 function Tasks() {
   const dispatch = useDispatch();
   const tasksList = useSelector((state) => state.tasks.tasksList);
-  let starType = "-outlined";
   const clickHandler = ({ id, type }) => {
     dispatch(tasksActions.toggle({ id, type }));
   };
@@ -26,7 +25,7 @@ function Tasks() {
                 <span className="material-icons-outlined text-lg">done</span>
               )}
             </div>
-            <p>{task.title}</p>
+            <p className={ task.completed ? "line-through" :''} >{task.title}</p>
           </div>
           <span
             onClick={clickHandler.bind(null, {

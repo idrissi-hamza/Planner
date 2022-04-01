@@ -7,18 +7,26 @@ function Form() {
   const dispatch = useDispatch();
   const inputRef = useRef(null);
   const [showInput, setShowInput] = useState(false);
-  const [task, setTask] = useState('');
+  const [task, setTask] = useState("");
+
+  const wait = (s) =>
+    setTimeout(() => {
+      setShowInput(false);
+    }, s);
 
   const clickHandler = () => {
     setShowInput(true);
     setTimeout(() => {
       inputRef.current.focus();
     }, 100);
+
+    
   };
 
-  const changeHandler=(e)=>{
-    setTask(e.target.value)
-  }
+  const changeHandler = (e) => {
+    setTask(e.target.value);
+  
+  };
   return (
     <>
       <button
@@ -32,8 +40,8 @@ function Form() {
         onSubmit={(e) => {
           e.preventDefault();
           // setShowInput(false);
-          dispatch(tasksActions.addTask(task))
-          setTask('')
+          dispatch(tasksActions.addTask(task));
+          setTask("");
         }}
       >
         {showInput && (
@@ -50,7 +58,6 @@ function Form() {
           </div>
         )}
       </form>
-     
     </>
   );
 }
