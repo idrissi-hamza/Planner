@@ -13,6 +13,15 @@ function App() {
   const [msg, setMsg] = useState("");
   const tasks = useSelector((state) => state.tasks);
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setMsg("");
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [tasks]);
+
+  useEffect(() => {
     const sendDataRequest = async () => {
       setMsg("Sending data");
       try {
@@ -20,9 +29,9 @@ function App() {
           method: "PUT",
           body: JSON.stringify(tasks),
         });
-        if (!response.ok) throw new Error("faild to send data");
+        if (!response.ok) throw new Error("Faild to send data!");
         console.log("worked");
-        setMsg("Data sent successfully");
+        setMsg("Updated !");
       } catch (err) {
         console.error(`${err.message}`);
         setMsg(err.message);
