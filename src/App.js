@@ -7,9 +7,14 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const URL = process.env.REACT_APP_URL;
+let isInitial = true;
 function App() {
   const tasks = useSelector((state) => state.tasks);
   useEffect(() => {
+    if (isInitial) {
+      isInitial = false;
+      return;
+    }
     fetch(` ${URL} `, {
       method: "PUT",
       body: JSON.stringify(tasks),
