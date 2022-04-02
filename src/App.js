@@ -22,6 +22,27 @@ function App() {
   }, [tasks]);
 
   useEffect(() => {
+    const fetchData = async () => {
+      setMsg("Loading...");
+      try {
+        const response = await fetch(`${URL}`);
+        console.log(response);
+        if (!response.ok) throw new Error("Failed to load data!");
+
+        const data = await response.json();
+        setMsg("Updated !");
+        console.log(data);
+        return data;
+      } catch (err) {
+        setMsg(err.message);
+      }
+    };
+
+    fetchData();
+
+  }, []);
+
+  useEffect(() => {
     const sendDataRequest = async () => {
       setMsg("Sending data");
       try {
@@ -30,10 +51,8 @@ function App() {
           body: JSON.stringify(tasks),
         });
         if (!response.ok) throw new Error("Faild to send data!");
-        console.log("worked");
         setMsg("Updated !");
       } catch (err) {
-        console.error(`${err.message}`);
         setMsg(err.message);
       }
     };
