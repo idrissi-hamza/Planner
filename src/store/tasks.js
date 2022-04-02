@@ -5,6 +5,7 @@ const initialState = {
     //   { title: "wake up", id: "ts1", completed: true, important: true },
     //   { title: "do something", id: "ts2", completed: false, important: false },
   ],
+  changed: false,
 };
 
 export const tasksSlice = createSlice({
@@ -18,6 +19,7 @@ export const tasksSlice = createSlice({
         completed: false,
         important: false,
       });
+      state.changed = !state.changed;
     },
     toggle: (state, action) => {
       let id = action.payload.id;
@@ -25,6 +27,7 @@ export const tasksSlice = createSlice({
       let idx = ids.findIndex((el) => el === id);
       state.tasksList[idx][action.payload.type] =
         !state.tasksList[idx][action.payload.type];
+      state.changed = !state.changed;
     },
     updateData(state, action) {
       state.tasksList = action.payload.tasksList;

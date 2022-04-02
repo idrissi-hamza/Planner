@@ -14,6 +14,9 @@ function App() {
   const dispatch = useDispatch();
   const [msg, setMsg] = useState("");
   const tasks = useSelector((state) => state.tasks);
+  const changed = useSelector((state) => state.changed);
+
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       setMsg("");
@@ -62,7 +65,7 @@ function App() {
       return;
     }
     sendDataRequest();
-  }, [tasks]);
+  }, [changed]);
   return (
     <>
       <div className="absolute bg-slate-900 text-slate-100 text-sm  px-2 right-0 bottom-0 z-10 ">
