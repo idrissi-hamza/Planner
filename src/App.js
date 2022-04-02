@@ -4,12 +4,14 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import TasksBar from "./components/TasksBar/TasksBar";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { tasksActions } from "./store/tasks";
 
 const URL = process.env.REACT_APP_URL;
 let isInitial = true;
 function App() {
+  const dispatch = useDispatch();
   const [msg, setMsg] = useState("");
   const tasks = useSelector((state) => state.tasks);
   useEffect(() => {
@@ -26,20 +28,18 @@ function App() {
       setMsg("Loading...");
       try {
         const response = await fetch(`${URL}`);
-        console.log(response);
+        // console.log(response);
         if (!response.ok) throw new Error("Failed to load data!");
 
         const data = await response.json();
         setMsg("Updated !");
-        console.log(data);
-        return data;
+        // console.log(data);
+        dispatch(tasksActions.updateData(data));
       } catch (err) {
         setMsg(err.message);
       }
     };
-
     fetchData();
-
   }, []);
 
   useEffect(() => {
