@@ -4,20 +4,25 @@ import { tasksActions } from "../../store/tasks";
 
 function Tasks() {
   const dispatch = useDispatch();
-  const tasksList = useSelector((state) => state.tasks.tasksList);
-  const clickHandler = ({ id, type }) => {
-    dispatch(tasksActions.toggle({ id, type }));
+  const list = useSelector((state) => state.tasks.list);
+  const pickDay = useSelector((state) => state.calendar.pickDay);
+
+  const tasksOfPickDay = list[pickDay] || [];
+
+  const clickHandler = ({ ref, id, type }) => {
+    dispatch(tasksActions.toggle({ ref, id, type }));
   };
 
   return (
-    <div className=" overflow-y-auto h-64  scrollbar-thin flex flex-col overflow-x-hidden   ">
-      {tasksList.map((task) => (
+    <div className=" overflow-y-auto h-80 scrollbar-thin flex flex-col overflow-x-hidden   ">
+      {tasksOfPickDay.map((task) => (
         <div
           key={task.id}
           className=" flex justify-between first:mt-4  px-4 pt-2 border-b hover:bg-slate-50 hover:border-l-4 border-l-blue-500  "
         >
           <div
             onClick={clickHandler.bind(null, {
+              ref: pickDay,
               id: task.id,
               type: "completed",
             })}
@@ -37,6 +42,7 @@ function Tasks() {
           <div className="relative hover-trigger select-none ">
             <span
               onClick={clickHandler.bind(null, {
+                ref: pickDay,
                 id: task.id,
                 type: "important",
               })}
@@ -45,11 +51,10 @@ function Tasks() {
               } `}
             >
               grade
-              
             </span>
             <div className="absolute bg-lime-200    h-8 px-1 z-10 w-36 hover-target text-lime-600 transition ease-in duration-500 delay-1000  flex -left-32  -top-6       ">
-               {task.important? 'Delete Importance':'Mark as Important!'}
-              </div>
+              {task.important ? "Delete Importance" : "Mark as Important!"}
+            </div>
           </div>
         </div>
       ))}

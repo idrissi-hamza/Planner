@@ -14,7 +14,7 @@ function App() {
   const dispatch = useDispatch();
   const [msg, setMsg] = useState("");
   const tasks = useSelector((state) => state.tasks);
-  const changed = useSelector((state) => state.changed);
+  const changed = useSelector((state) => state.tasks.changed);
 
   
   useEffect(() => {

@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { useCallback } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tasksActions } from "../../store/tasks";
@@ -11,6 +10,8 @@ function Form() {
   const [showInput, setShowInput] = useState(false);
   const [task, setTask] = useState("");
 
+  const pickDay = useSelector((state) => state.calendar.pickDay);
+
   const clickHandler = () => {
     setShowInput(true);
     setTimeout(() => {
@@ -20,12 +21,24 @@ function Form() {
 
   const changeHandler = (e) => {
     setTask(e.target.value);
-    const wait = (s) =>
+  };
+
+  useEffect(() => {
+    const timer = (s) => {
       setTimeout(() => {
         setShowInput(false);
-      }, s);
-    wait(10000);
-    return () => clearTimeout(wait);
+      }, s * 1000);
+    };
+    timer(10);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [task, setTask]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(tasksActions.addTask({ title: task, ref: pickDay }));
+    setTask("");
   };
 
   return (
@@ -37,14 +50,7 @@ function Form() {
         <span className="material-icons-outlined">add_task</span>Add a Task
       </button>
 
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          // setShowInput(false);
-          dispatch(tasksActions.addTask(task));
-          setTask("");
-        }}
-      >
+      <form onSubmit={submitHandler}>
         {showInput && (
           <div className="flex items-center justify-start m-2 text-slate-400 pb-1 border-b ">
             <span className="material-icons-outlined">add</span>

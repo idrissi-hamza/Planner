@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  tasksList: [
+  list: {},
     //   { title: "wake up", id: "ts1", completed: true, important: true },
-    //   { title: "do something", id: "ts2", completed: false, important: false },
-  ],
+    //   pickday1:[{ title: "do something", id: "ts2", completed: false, important: false },{ title: "wake up", id: "ts1", completed: true, important: true }],
+
   changed: false,
 };
 
@@ -13,24 +13,34 @@ export const tasksSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state, action) => {
-      state.tasksList.push({
+      state.changed = !state.changed;
+
+      const task = {
         id: Date.now(),
-        title: action.payload,
+        title: action.payload.title,
         completed: false,
         important: false,
-      });
-      state.changed = !state.changed;
+      };
+      const ref = action.payload.ref;
+
+      state.list[ref] ? state.list[ref].push(task) : (state.list[ref] = [task]);
     },
     toggle: (state, action) => {
+      let ref = action.payload.ref;
       let id = action.payload.id;
-      let ids = state.tasksList.map((task) => task.id);
-      let idx = ids.findIndex((el) => el === id);
-      state.tasksList[idx][action.payload.type] =
-        !state.tasksList[idx][action.payload.type];
+      let type = action.payload.type;
+
+      let tasksOfPickDay = state.list[ref];
+
+      let idx = tasksOfPickDay
+        .map((task) => task.id)
+        .findIndex((el) => el === id);
+
+      tasksOfPickDay[idx][type] = !tasksOfPickDay[idx][type];
       state.changed = !state.changed;
     },
     updateData(state, action) {
-      state.tasksList = action.payload.tasksList;
+      state.list = action.payload.list;
     },
   },
 });
