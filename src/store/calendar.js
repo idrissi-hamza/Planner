@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import dayjs from "dayjs";
+import { getToday } from "../util";
 
 const initialState = {
   monthIndex: dayjs().month(),
   change: false,
   navBar: true,
-  pickDay: Date.now(),
+  pickDay: getToday(),
   // pickMonth:dayjs().month() //if a day from another month is clicked the big calendar should  show the choosen  month
 };
 
@@ -25,8 +26,7 @@ export const calendarSlice = createSlice({
       state.monthIndex = dayjs().month();
       state.change = !state.change;
 
-      state.pickDay = Date.now();
-
+      state.pickDay = getToday();
     },
     toggleNav(state) {
       state.navBar = !state.navBar;

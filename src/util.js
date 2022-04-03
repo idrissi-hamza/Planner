@@ -21,3 +21,10 @@ export const weekday = [
   "Friday",
   "Saturday",
 ];
+
+export const getToday = () => {
+  const year = dayjs().year();
+  const day = dayjs().date();
+  const month = dayjs().month();
+  return +dayjs(new Date(year, month, day));
+};
