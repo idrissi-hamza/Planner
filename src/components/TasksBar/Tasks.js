@@ -7,15 +7,18 @@ function Tasks() {
   const list = useSelector((state) => state.tasks.list);
   const pickDay = useSelector((state) => state.calendar.pickDay);
 
+  if(!list){
+    dispatch(tasksActions.reset())
+  }
   const tasksOfPickDay = list[pickDay] || [];
 
   const toggleHandler = ({ ref, id, type }) => {
     dispatch(tasksActions.toggle({ ref, id, type }));
   };
 
-  const deleteHandler=({ ref, id })=>{
+  const deleteHandler = ({ ref, id }) => {
     dispatch(tasksActions.delete({ ref, id }));
-  }
+  };
 
   return (
     <div className=" overflow-y-auto h-80 scrollbar-thin flex flex-col overflow-x-hidden   ">

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import Tasks from "./Tasks";
 const TasksBar = () => {
   const pickDay = useSelector((state) => state.calendar.pickDay);
+  const status = useSelector((state) => state.tasks.status);
 
   return (
     <>
@@ -15,6 +16,7 @@ const TasksBar = () => {
         <div className=" pt-4  flex-1">
           <Form />
           <Tasks/>
+          {/* <pre>{` ${JSON.stringify(status)}`}</pre> */}
         </div>
       </div>
     </>

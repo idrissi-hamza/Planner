@@ -23,17 +23,17 @@ function Form() {
     setTask(e.target.value);
   };
 
-  useEffect(() => {
-    const timer = (s) => {
-      setTimeout(() => {
-        setShowInput(false);
-      }, s * 1000);
-    };
-    timer(10);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [task, setTask]);
+
+
+  // useEffect(() => {
+  //   const timer = (s) => {
+  //     setTimeout(() => {
+  //       setShowInput(false);
+  //     }, s * 1000);
+  //   };
+  //   timer(4)
+  //   return ()=>{}
+  // }, [changeHandler]);
 
   const submitHandler = (e) => {
     e.preventDefault();
