@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  list: {},
-    //   { title: "wake up", id: "ts1", completed: true, important: true },
-    //   pickday1:[{ title: "do something", id: "ts2", completed: false, important: false },{ title: "wake up", id: "ts1", completed: true, important: true }],
-
+  list: {
+    // day:[comle:true,id:kkj,..]
+  },
   changed: false,
 };
 
@@ -41,6 +40,17 @@ export const tasksSlice = createSlice({
     },
     updateData(state, action) {
       state.list = action.payload.list;
+    },
+
+    delete(state, action) {
+      let ref = action.payload.ref;
+      let id = action.payload.id;
+      console.log(ref);
+      state.list[ref] = state.list[ref].filter((task) => task.id !== id);
+      if(state.list[ref].length===0){
+        delete state.list[ref]
+      }
+      state.changed = !state.changed;
     },
   },
 });

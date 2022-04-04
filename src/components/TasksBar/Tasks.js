@@ -9,24 +9,29 @@ function Tasks() {
 
   const tasksOfPickDay = list[pickDay] || [];
 
-  const clickHandler = ({ ref, id, type }) => {
+  const toggleHandler = ({ ref, id, type }) => {
     dispatch(tasksActions.toggle({ ref, id, type }));
   };
+
+  const deleteHandler=({ ref, id })=>{
+    dispatch(tasksActions.delete({ ref, id }));
+  }
 
   return (
     <div className=" overflow-y-auto h-80 scrollbar-thin flex flex-col overflow-x-hidden   ">
       {tasksOfPickDay.map((task) => (
         <div
           key={task.id}
-          className=" flex justify-between first:mt-4  px-4 pt-2 border-b hover:bg-slate-50 hover:border-l-4 border-l-blue-500  "
+          className="group flex justify-start first:mt-4  px-4 pt-2 border-b hover:bg-slate-50 hover:border-l-4 border-l-blue-500  "
         >
+          {/* =============completed ==============*/}
           <div
-            onClick={clickHandler.bind(null, {
+            onClick={toggleHandler.bind(null, {
               ref: pickDay,
               id: task.id,
               type: "completed",
             })}
-            className="flex  items-center  space-x-3 cursor-pointer mb-2 "
+            className=" mr-auto flex  items-center  space-x-3 cursor-pointer mb-2 "
           >
             <div className="w-5 h-5 rounded-full border-2 flex items-center justify-center cursor-pointer ">
               {task.completed && (
@@ -39,14 +44,29 @@ function Tasks() {
               {task.title}
             </p>
           </div>
-          <div className="relative hover-trigger select-none ">
+
+          {/* =============delete icon==============*/}
+          <div className=" select-none flex ">
             <span
-              onClick={clickHandler.bind(null, {
+              onClick={deleteHandler.bind(null, {
+                ref: pickDay,
+                id: task.id,
+              })}
+              className={`group-hover:flex hidden hover:bg-slate-200 mb-2 mr-1 p-1 aspect-square  items-center justify-center   text-xl cursor-pointer text-red-500 material-icons-outlined`}
+            >
+              delete
+            </span>
+          </div>
+
+          {/* =============delete icon==============*/}
+          <div className="relative hover-trigger select-none flex ">
+            <span
+              onClick={toggleHandler.bind(null, {
                 ref: pickDay,
                 id: task.id,
                 type: "important",
               })}
-              className={` hover:bg-slate-200 mb-2 p-1 aspect-square flex items-center justify-center   text-xl cursor-pointer text-blue-500 ${
+              className={` hover:bg-slate-200 mb-2 mr-1 p-1 aspect-square flex items-center justify-center   text-xl cursor-pointer text-blue-500 ${
                 !task.important ? "material-icons-outlined" : "material-icons"
               } `}
             >
